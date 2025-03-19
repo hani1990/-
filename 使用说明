@@ -1,0 +1,115 @@
+# 小红书评论助手 (exe版) 使用说明
+
+## 程序简介
+如有问题联系wx: brightwise2020
+
+小红书评论助手是一款自动化工具，可帮助您在小红书平台上进行搜索、互动评论以及使用AI生成回复。程序已打包为独立的exe可执行文件，无需安装Python环境即可使用。
+
+调用AI需要填写自己的apikey
+通过我的邀请链接注册，免费获得2000 万 Tokens： https://cloud.siliconflow.cn/i/XE2ri9Jt
+
+## 使用前准备
+
+1. **比特浏览器安装**：
+   - 确保已安装比特浏览器并正确配置
+   - 比特浏览器需在本地127.0.0.1:54345端口运行
+
+2. **小红书账号登录**：
+   - 在比特浏览器中已登录小红书账号
+   - 确保账号状态正常（未被限制或封禁）
+
+3. **搜索关键词准备**：
+   - 第一次运行程序会创建搜索词的文件，根据提示录入搜索词到指定的文件爱你中国呢
+   - 每行输入一个搜索关键词
+
+## 配置说明
+
+在首次运行前，请检查并按需修改`config.ini`配置文件：
+
+```ini
+[DEFAULT]
+scroll_times = 1
+max_retries = 3
+
+[ai_prompt]
+comment_prompt = 请针对以下评论生成一个积极、友好且自然的回复，回复应该简短（不超过20个字），显得真诚而不做作。评论内容：
+note_comment_prompt = 请基于以下笔记内容，生成一个积极、友好且自然的评论，评论应该简短（不超过30个字），显得真诚而有价值。笔记内容：
+
+[guiji]
+url = https://api.siliconflow.cn/v1
+api_key = 您的API密钥 通过我的邀请链接注册，免费获得2000 万 Tokens： https://cloud.siliconflow.cn/i/XE2ri9Jt
+model = Qwen/Qwen2.5-Coder-32B-Instruct
+
+[comment_comments]
+is_comment_note = 1
+is_comment_comments = 1
+like_comments_probability = 0.7
+reply_comments_probability = 0.3
+max_interact_comments = 3
+is_interact_sub_comments = 1
+sub_comments_probability = 0.5
+max_interact_sub_comments = 2
+comment_interval_min = 3
+comment_interval_max = 10
+like_interval_min = 500
+like_interval_max = 1500
+
+[comment_mode]
+use_ai = 1
+random_comments = 支持！|同意这个观点👍|说得好！|学习了|收藏了|谢谢分享|很有道理|一起加油|这个不错|很实用的建议
+random_note_comments = 内容很有价值，学习了！|写得真好，受益匪浅|感谢分享，收藏了|这篇笔记太实用了|干货满满，正需要这个|很喜欢你的分享方式|逻辑清晰，讲解到位|又涨知识了，谢谢博主|这个观点很有见地|分享的内容很专业
+```
+
+## 运行程序
+
+1. **启动比特浏览器**：
+   - 确保比特浏览器已启动并运行正常
+
+2. **运行主程序**：
+   - 双击`xhs_comment_assistant.exe`文件启动程序
+   - 程序将自动读取配置和关键词文件
+
+3. **监控程序运行**：
+   - 程序运行过程中会在命令行窗口显示日志信息
+   - 同时会生成`xhs_search.log`日志文件记录详细信息
+
+## 常见问题解答
+
+1. **程序提示需要登录怎么办？**
+   - 确保在比特浏览器中已正确登录小红书账号
+   - 检查比特浏览器中的Cookie是否有效
+
+2. **程序无法连接到比特浏览器怎么办？**
+   - 确认比特浏览器是否正常运行
+   - 检查端口是否为默认的54345，如有修改需在`bit_api.py`中更新BASE_URL
+
+3. **AI评论无法生成怎么办？**
+   - 检查`config.ini`中的API密钥是否正确设置
+   - 确认网络连接是否正常
+
+4. **如何使用多个浏览器实例？**
+   - 创建多个特定ID的查询文件，如`search_queries_1.txt`、`search_queries_2.txt`等
+   - 修改启动参数或在程序中设置多线程数量
+
+5. **程序显示超时或崩溃如何处理？**
+   - 检查网络连接是否稳定
+   - 增加配置中的`max_retries`值
+   - 查看日志文件了解详细错误信息
+
+## 安全与合规提示
+
+- 请合理设置操作频率，避免频繁请求导致账号风险
+- 自动化操作需遵守小红书平台规则
+- 生成的AI内容应当符合平台内容规范
+- 本工具仅供学习和研究使用，请勿用于违规操作
+
+## 日志与数据文件
+
+程序运行会生成以下文件：
+- `xhs_search.log`: 操作日志
+- `note_links.txt`: 提取的笔记链接
+- 登录状态截图 (如检测到需要登录)
+
+请定期检查这些文件，了解程序运行状态。 
+
+如有问题联系wx: brightwise2020
